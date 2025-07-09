@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amorzinho 💖</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="cursor-pet" class="cursor-pet"></div>
+
+    <header class="header-section">
+        <h1 id="love-message">Oiii meu neneeeeem, esse é um presentinhoo pra você 💖</h1>
+    </header>
+
+    <div id="sidebar-toggle" class="floating-heart-toggle">💖</div>
+
+    <nav class="sidebar-menu">
+        <ul>
+            <li><a href="#home" class="nav-link active" data-target="home">Início 🏠</a></li>
+            <li><a href="#momentos" class="nav-link" data-target="momentos">Minha Lindeza 📸</a></li>
+            <li><a href="#jogos" class="nav-link" data-target="jogos">Joguinhoos 🎮</a></li>
+            <li><a href="#magia" class="nav-link" data-target="magia">Botão Mágicuuu ✨</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="centered-content-wrapper">
+            <section id="home" class="section-container active">
+                <h2>Bem-vindaaaa, meuuu denguu! 🥰</h2>
+                <p>Este sitezinhuu foi feito com todo carinho e amor do mundo pra voxeee, minha princesaaaa!</p>
+
+                <div class="main-buttons-container">
+                    <button id="love-button" class="cute-button large-button pulse">Clique aqui se você miim amaaa
+                        🥺</button>
+                    <div id="surprise-message" class="surprise-box hidden">
+                        <p>Eu sabiaaaa! Você é o amor da minha vidaaa todinhaaa! 🤍🤍🤍</p>
+                        <img src="img/surpresa.jpeg" alt="Surpresa fofa" class="cute-gif">
+                    </div>
+                </div>
+
+                <div class="special-quote">
+                    <p>"Com você, cada dia é uma aventura e cada momento é um sonho."</p>
+                    <p class="author">- Seu Eterno Admirador</p>
+                </div>
+
+                <div class="cute-emojis">
+                    <span>🤍</span>
+                    <span>✨</span>
+                    <span>🌸</span>
+                    <span>🌟</span>
+                </div>
+
+                <div class="call-to-action">
+                    <p>desvende mais surpresinhaas!</p>
+                    <button class="cute-button scroll-down-button" data-target="momentos">fotuuus lindaaas do meu neneem
+                    </button>
+                </div>
+            </section>
+
+            <section id="momentos" class="section-container">
+                <h2>MEEU MOMOOOOOO ✨</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="img/ela.jpeg" alt="ela">
+                        <p class="love-note">MINHA VIDAAA!</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/elaaaa.jpeg" alt="elaa">
+                        <p class="love-note">SEU SORRISO ILUMINAAA MEU DIIIAAAA!</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/elaaa.jpeg" alt="elaaa">
+                        <p class="love-note">MINHA ESTRELINHAAA LINDAA!</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/elaa.jpeg" alt="elaaaa">
+                        <p class="love-note">PERFEIIIÇÃOOOOOOO! </p>
+                    </div>
+                </div>
+                <audio id="background-music" loop>
+                    <source src="audio/nossamusica.mp3" type="audio/mpeg">
+                    Seu navegador não suporta áudio.
+                </audio>
+                <button id="play-music-button" class="cute-button">Tocar Nossa Música 🎶</button>
+            </section>
+
+            <section id="jogos" class="section-container">
+                <h2>Joguinhos Divertidos! 🤍🎮</h2>
+
+                <div class="game-section">
+                    <h3>Quiz: O Quanto Você Me Conheciii? </h3>
+                    <div id="quiz-game" class="game-area">
+                    </div>
+                    <button class="cute-button start-game-button" data-game="quiz">Começar quizzzz</button>
+                </div>
+
+                <div class="game-section">
+                    <h3>Qual a Palavra do Nosso Amoooor? 🤍</h3>
+                    <p>Descubra a palavra secreta que representa o nosso amoooor!</p>
+                    <div id="word-guess-game" class="game-area">
+                        <div id="word-display" class="word-display"></div>
+                        <div id="guess-input-container">
+                            <input type="text" id="guess-input" maxlength="1" placeholder="Letra" class="cute-input">
+                            <button id="guess-button" class="cute-button small-button">Adivinhaaaarrr</button>
+                        </div>
+                        <p id="guess-message" class="game-message"></p>
+                        <p>Tentativas restantes: <span id="attempts-left"></span></p>
+                    </div>
+                    <button class="cute-button start-game-button" data-game="word-guess">Novo Jogooo</button>
+                </div>
+
+                <div class="game-section">
+                    <h3>Verdade ou Desafio Fofuchuu? ✨</h3>
+                    <p>O que iremos fazeeer!</p>
+                    <div id="truth-dare-game" class="game-area">
+                        <p id="td-prompt" class="game-message"></p>
+                        <button id="truth-button" class="cute-button small-button">Verdadii</button>
+                        <button id="dare-button" class="cute-button small-button">Desafio Fofooo</button>
+                    </div>
+                    <button class="cute-button start-game-button" data-game="truth-dare">Novo Jogooo</button>
+                </div>
+
+                <div class="game-section">
+                    <h3>Roletinha do nosso incriveel Amor à Distância! 🌍🤍</h3>
+                    <div id="spin-wheel" class="game-area">
+                        <canvas id="wheelCanvas" width="400" height="400"></canvas>
+                        <button class="cute-button" id="spin-button">Gireeeeeeeeeeee!</button>
+                        <p id="wheel-result"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="magia" class="section-container">
+                <h2>Nosso Botão Mágico ✨</h2>
+                <p>apertiiiiiiii!</p>
+                <button id="magic-button" class="cute-button">Botão Mágico! 🌈</button>
+            </section>
+        </div>
+    </main>
+
+    <button id="theme-toggle" class="cute-button theme-toggle-button">Modo Diiaaa/Noitiii ☀️🌙</button>
+
+    <script src="js/script.js"></script>
+    <script src="js/games.js"></script>
+</body>
+
+</html>

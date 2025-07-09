@@ -1,0 +1,1057 @@
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); /* Para títulos e toques especiais */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap'); /* Para corpo de texto, moderno e legível */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap'); /* Para botões e menus, suave e amigável */
+
+:root {
+    /* Cores Fofas e Vibrantes - Modo Dia (mais saturadas e alegres) */
+    --primary-bg-day: #fce4ec; /* Rosa Bebê Pastel */
+    --secondary-bg-day: #ffebee; /* Creme Rosado Suave */
+    --accent-color-day: #ff80ab; /* Rosa Chiclete Vibrante */
+    --text-color-day: #5d4037; /* Marrom Escuro Suave (chocolate) */
+    --button-bg-day: #ffcdd2; /* Rosa Claro para Botões */
+    --button-hover-day: #f48fb1; /* Rosa Médio no Hover */
+    --sidebar-bg-day: #e0f7fa; /* Azul Céu Suave para Sidebar */
+    --link-color-day: #80deea; /* Azul Turquesa para Links */
+
+    /* Cores Mágicas e Aconchegantes - Modo Noite (tons mais profundos e estrelados) */
+    --primary-bg-night: #2c3e50; /* Azul Marinho Profundo */
+    --secondary-bg-night: #34495e; /* Azul Escuro Aconchegante */
+    --accent-color-night: #ffd700; /* Dourado Estrela Brilhante */
+    --text-color-night: #f0f4c3; /* Creme Suave para Texto */
+    --button-bg-night: #9b59b6; /* Roxo Mágico para Botões */
+    --button-hover-night: #8e44ad; /* Roxo Mais Escuro no Hover */
+    --sidebar-bg-night: #1c2a3d; /* Azul Quase Preto para Sidebar */
+    --link-color-night: #f06292; /* Rosa Vibrante para Links */
+
+    /* Sombras, Bordas e Elementos de Brilho */
+    --box-shadow-fofo: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada e fofa */
+    --box-shadow-hover: 0 12px 25px rgba(0, 0, 0, 0.25); /* Sombra maior no hover */
+    --border-radius-cute: 25px; /* Bordas mais arredondadas para um toque suave */
+    --text-shadow-cute: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para o texto */
+    --sparkle-color: #fffacd; /* Cor de brilho para efeitos */
+}
+
+/* Base styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--primary-bg-day);
+    color: var(--text-color-day);
+    transition: background-color 0.7s ease, color 0.7s ease; /* Transição mais suave */
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Modo Noite */
+body.night-mode {
+    background-color: var(--primary-bg-night);
+    color: var(--text-color-night);
+}
+
+body.night-mode .sidebar-menu {
+    background-color: var(--sidebar-bg-night);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra mais escura na noite */
+}
+
+body.night-mode .sidebar-menu a {
+    color: var(--link-color-night);
+    text-shadow: none;
+}
+
+body.night-mode .sidebar-menu a:hover,
+body.night-mode .sidebar-menu a.active {
+    background-color: var(--button-hover-night);
+    color: white;
+}
+
+body.night-mode .cute-button {
+    background-color: var(--button-bg-night);
+    color: var(--text-color-night);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.night-mode .cute-button:hover {
+    background-color: var(--button-hover-night);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.night-mode .section-container {
+    background-color: var(--secondary-bg-night);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.night-mode .section-container h2 {
+    color: var(--accent-color-night);
+    text-shadow: 0 0 10px var(--sparkle-color); /* Brilho nos títulos noturnos */
+}
+
+body.night-mode .special-quote {
+    color: var(--accent-color-night);
+    text-shadow: 0 0 8px var(--sparkle-color);
+}
+
+body.night-mode .special-quote .author {
+    color: var(--link-color-night);
+}
+
+body.night-mode .surprise-box {
+    background-color: #3f51b5; /* Azul mais escuro para surpresa noturna */
+    color: var(--text-color-night);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.night-mode .surprise-box p {
+    color: var(--accent-color-night);
+}
+
+body.night-mode .call-to-action {
+    color: var(--accent-color-night);
+}
+
+/* Animação de estrelas para o modo noite (mais densas e brilhantes) */
+body.night-mode::before,
+body.night-mode::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-repeat: repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+body.night-mode::before {
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 80px 80px; /* Estrelas menores e mais próximas */
+    animation: twinkle 8s infinite alternate;
+    opacity: 0.3; /* Mais visíveis */
+}
+
+body.night-mode::after {
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 120px 120px; /* Estrelas maiores e mais espaçadas */
+    animation: twinkle 12s infinite reverse;
+    opacity: 0.2;
+}
+
+@keyframes twinkle {
+    0% { transform: translate(0, 0); opacity: 0.15; }
+    50% { transform: translate(15px, 15px); opacity: 0.4; }
+    100% { transform: translate(0, 0); opacity: 0.15; }
+}
+
+
+/* Layout principal */
+.sidebar-menu {
+    width: 280px; /* Levemente mais larga */
+    background-color: var(--sidebar-bg-day);
+    padding: 25px;
+    box-shadow: var(--box-shadow-fofo);
+    border-radius: 0 var(--border-radius-cute) var(--border-radius-cute) 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    left: -280px; /* Esconde a sidebar inicialmente */
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Efeito elástico na transição */
+    z-index: 1000;
+}
+
+.sidebar-menu.active {
+    left: 0;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 60px; /* Mais espaço */
+}
+
+.sidebar-menu li {
+    margin-bottom: 25px; /* Mais espaçamento entre os itens */
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: var(--link-color-day);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.3em; /* Fonte um pouco maior */
+    padding: 12px 20px;
+    border-radius: 30px; /* Mais arredondado */
+    transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease;
+    display: block;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.08); /* Sombra suave no texto */
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background-color: var(--button-hover-day);
+    color: white;
+    transform: translateX(10px) scale(1.05); /* Desliza e cresce um pouco */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 50px; /* Mais padding */
+    margin-left: 0;
+    transition: margin-left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: relative;
+}
+
+.sidebar-menu.active ~ .main-content {
+    margin-left: 280px; /* Ajusta a margem */
+}
+
+/* Header e Mensagem de Amor */
+.header-section {
+    text-align: center;
+    padding: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.typewriter {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5em; /* Fonte maior */
+    color: var(--accent-color-day);
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid var(--accent-color-day);
+    margin: 0 auto;
+    letter-spacing: .1em; /* Menos espaçamento para um visual mais denso */
+    animation: typing 4s steps(40, end) forwards, blink-caret .75s step-end infinite;
+    max-width: fit-content;
+    text-shadow: var(--text-shadow-cute);
+}
+
+/* Animação de digitação */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Animação do cursor piscando */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-color-day); }
+}
+
+/* Seções de Conteúdo */
+.section-container {
+    background-color: var(--secondary-bg-day);
+    padding: 40px;
+    border-radius: var(--border-radius-cute);
+    box-shadow: var(--box-shadow-fofo);
+    margin-bottom: 35px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    min-height: 450px; /* Tamanho mínimo maior */
+    display: none;
+}
+
+.section-container.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+}
+
+.section-container h2 {
+    font-family: 'Pacifico', cursive;
+    color: var(--accent-color-day);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 3em; /* Títulos maiores e mais impactantes */
+    text-shadow: var(--text-shadow-cute);
+}
+
+.section-container p {
+    font-size: 1.2em; /* Texto um pouco maior */
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-color-day);
+}
+
+/* Centralização da Página Inicial */
+.home-page-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Ajusta para a altura da tela */
+    text-align: center;
+}
+
+.main-buttons-container {
+    margin-top: 40px;
+}
+
+/* Botões Fofos */
+.cute-button {
+    background-color: var(--button-bg-day);
+    color: var(--text-color-day);
+    border: none;
+    padding: 18px 35px; /* Padding maior */
+    border-radius: 40px; /* Bem arredondado */
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.3em; /* Fonte maior nos botões */
+    cursor: pointer;
+    transition: background-color 0.4s ease, transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), box-shadow 0.4s ease;
+    display: block;
+    margin: 25px auto;
+    box-shadow: var(--box-shadow-fofo);
+    letter-spacing: 0.05em; /* Um pouco de espaçamento */
+}
+
+.cute-button.large-button {
+    padding: 25px 50px;
+    font-size: 1.8em; /* Botão principal ainda maior */
+    margin-top: 50px;
+}
+
+.cute-button:hover {
+    background-color: var(--button-hover-day);
+    transform: translateY(-5px) scale(1.03); /* Sobe e cresce mais */
+    box-shadow: var(--box-shadow-hover);
+}
+
+.cute-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animação de pulso para o botão */
+.pulse {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); } /* Pulsa mais forte */
+    100% { transform: scale(1); }
+}
+
+
+/* Botão de Surpresa */
+.surprise-box {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #fff9c4; /* Amarelo suave */
+    border-radius: var(--border-radius-cute);
+    box-shadow: var(--box-shadow-fofo);
+    display: none;
+    border: 3px dashed #ffab91; /* Borda tracejada fofa */
+}
+
+.surprise-box.hidden {
+    display: none;
+}
+
+.surprise-box p {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.2em; /* Fonte maior */
+    color: #e91e63; /* Rosa forte vibrante */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.cute-gif {
+    max-width: 220px; /* GIF maior */
+    border-radius: 15px;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Citação Especial */
+.special-quote {
+    margin-top: 60px;
+    font-family: 'Pacifico', cursive;
+    font-size: 2em; /* Citação maior */
+    color: #c2185b; /* Vinho suave mais forte */
+    line-height: 1.6;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.special-quote::before, .special-quote::after {
+    content: '💖'; /* Corações nas extremidades */
+    font-size: 0.8em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.7;
+}
+.special-quote::before { left: -30px; }
+.special-quote::after { right: -30px; }
+
+
+.special-quote .author {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9em;
+    font-style: italic;
+    color: #ad1457;
+    margin-top: 15px;
+}
+
+/* Emojis Fofos */
+.cute-emojis {
+    margin-top: 50px;
+    font-size: 4em; /* Emojis gigantes */
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.cute-emojis span {
+    display: inline-block;
+    margin: 0 15px;
+    transform: translateY(0);
+    animation: float 3s infinite ease-in-out alternate;
+    text-shadow: 0 0 15px var(--sparkle-color); /* Efeito de brilho nos emojis */
+}
+
+.cute-emojis span:nth-child(2) { animation-delay: 0.4s; }
+.cute-emojis span:nth-child(3) { animation-delay: 0.8s; }
+.cute-emojis span:nth-child(4) { animation-delay: 1.2s; }
+
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); } /* Flutua mais alto */
+    100% { transform: translateY(0); }
+}
+
+
+/* Chamada para Ação */
+.call-to-action {
+    margin-top: 70px;
+    font-size: 1.3em; /* Texto maior */
+    color: #4a148c; /* Roxo mais profundo */
+}
+
+.scroll-down-button {
+    background-color: #ff4081; /* Rosa vibrante */
+    color: white;
+    box-shadow: 0 6px 15px rgba(255, 64, 129, 0.4);
+}
+
+.scroll-down-button:hover {
+    background-color: #e91e63;
+    box-shadow: 0 8px 20px rgba(255, 64, 129, 0.6);
+}
+
+
+/* Galeria de Fotos - Nossos Momentos */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Imagens um pouco maiores */
+    gap: 30px;
+    margin-top: 35px;
+}
+
+.gallery-item {
+    background-color: #ffffff;
+    border-radius: var(--border-radius-cute);
+    box-shadow: var(--box-shadow-fofo);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Altura maior */
+    object-fit: cover;
+    border-top-left-radius: var(--border-radius-cute);
+    border-top-right-radius: var(--border-radius-cute);
+}
+
+.love-note {
+    font-family: 'Quicksand', sans-serif;
+    font-style: italic;
+    color: #757575;
+    margin-top: 20px;
+    font-size: 1.05em; /* Nota de amor um pouco maior */
+}
+
+/* Seção de Jogos */
+.game-section {
+    background-color: #f3e5f5; /* Lilás suave */
+    padding: 30px;
+    border-radius: var(--border-radius-cute);
+    box-shadow: var(--box-shadow-fofo);
+    margin-bottom: 35px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-section:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.game-section h3 {
+    font-family: 'Pacifico', cursive;
+    color: #ab47bc; /* Roxo vibrante */
+    margin-bottom: 25px;
+    font-size: 2.5em; /* Título do jogo maior */
+    text-shadow: var(--text-shadow-cute);
+}
+
+.game-area {
+    margin-top: 25px;
+    padding: 25px;
+    background-color: #e1bee7; /* Lilás mais claro */
+    border-radius: 15px;
+    border: 3px dashed #ce93d8; /* Borda tracejada mais grossa */
+    min-height: 220px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Mais espaçamento */
+}
+
+/* Quiz */
+.quiz-question {
+    font-size: 1.4em; /* Pergunta maior */
+    margin-bottom: 25px;
+    color: #4a148c; /* Roxo escuro */
+    font-weight: 600; /* Mais negrito */
+}
+
+.quiz-options button {
+    display: block;
+    width: 85%; /* Botões um pouco mais largos */
+    margin: 12px auto;
+    background-color: #ce93d8;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.quiz-options button:hover {
+    background-color: #ba68c8;
+    transform: translateY(-2px);
+}
+
+.quiz-options button.correct {
+    background-color: #8bc34a; /* Verde para correto */
+    box-shadow: 0 0 15px rgba(139, 195, 74, 0.6); /* Brilho verde */
+}
+
+.quiz-options button.incorrect {
+    background-color: #ef5350; /* Vermelho para incorreto */
+    box-shadow: 0 0 15px rgba(239, 83, 80, 0.6); /* Brilho vermelho */
+}
+
+/* Cursor Pet */
+.cursor-pet {
+    position: fixed;
+    width: 60px; /* Pet maior */
+    height: 60px;
+    background-image: url('img/pixel_cat.png'); /* Sua imagem de pet */
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s linear; /* Movimento mais suave */
+}
+
+/* Animação de Queda (corações, pétalas) */
+.falling-element {
+    position: fixed;
+    top: -30px;
+    width: 25px; /* Elementos maiores */
+    height: 25px;
+    background-color: #ff99aa;
+    border-radius: 50%;
+    opacity: 0.9;
+    pointer-events: none;
+    animation: fall linear infinite;
+    z-index: 999;
+    font-size: 1.8em; /* Para ícones de coração */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 0 0 8px rgba(255,255,255,0.8); /* Brilho nos corações */
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } /* Gira enquanto cai */
+}
+
+/* Botão de Modo Dia/Noite */
+.theme-toggle-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    padding: 15px 25px; /* Botão maior */
+    font-size: 1.1em;
+}
+
+/* Estilos para os novos jogos */
+.cute-button.small-button {
+    padding: 12px 22px;
+    font-size: 1.05em;
+    margin: 10px 8px; /* Ajuste a margem para botões lado a lado */
+    border-radius: 30px;
+}
+
+.cute-input {
+    padding: 12px 18px;
+    border: 3px solid var(--accent-color-day); /* Borda mais grossa */
+    border-radius: 25px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2em; /* Fonte maior */
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cute-input:focus {
+    border-color: var(--button-hover-day);
+    box-shadow: 0 0 12px rgba(255, 128, 171, 0.6); /* Sombra de brilho no foco */
+}
+
+.word-display {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em; /* Texto da palavra ainda maior */
+    letter-spacing: 0.3em; /* Mais espaçamento entre letras */
+    margin-bottom: 25px;
+    color: #e91e63; /* Rosa forte vibrante */
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+}
+
+.word-display span {
+    border-bottom: 4px solid #e91e63; /* Linha mais grossa */
+    padding: 0 8px;
+    margin: 0 4px;
+    display: inline-block;
+}
+
+#guess-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Mais espaço entre input e botão */
+    margin-bottom: 25px;
+}
+
+.game-message {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2em; /* Mensagem maior */
+    margin-bottom: 20px;
+    color: #6a1b9a; /* Roxo suave */
+    font-weight: 500;
+}
+
+/* Estilos da Roda da Sorte */
+#wheelCanvas {
+    border: 8px solid var(--accent-color-day); /* Borda mais grossa e colorida */
+    border-radius: 50%;
+    margin-bottom: 25px;
+    background-color: #fff;
+    box-shadow: var(--box-shadow-fofo);
+    transition: transform 0.3s ease; /* Para um leve efeito no hover se quiser */
+}
+
+#wheelCanvas:hover {
+    transform: scale(1.01); /* Leve crescimento no hover */
+}
+
+/* Animação do menu lateral (coração flutuante) */
+.floating-heart-toggle {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: 70px; /* Coração maior */
+    height: 70px;
+    background-color: #ff4081; /* Rosa vibrante */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em; /* Ícone de coração maior */
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 64, 129, 0.4);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.3s ease;
+    z-index: 1001;
+    animation: pulse 1.8s infinite alternate; /* Animação de pulso */
+    text-shadow: 0 0 10px rgba(255,255,255,0.7); /* Brilho no coração */
+}
+
+.floating-heart-toggle:hover {
+    transform: scale(1.15); /* Cresce mais no hover */
+    background-color: #e91e63;
+    box-shadow: 0 10px 25px rgba(255, 64, 129, 0.6);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); } /* Pulsa um pouco mais */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sidebar-menu {
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: -180px; /* Esconde mais no topo */
+        flex-direction: row;
+        justify-content: center;
+        padding: 15px;
+        border-radius: 0 0 var(--border-radius-cute) var(--border-radius-cute);
+    }
+
+    .sidebar-menu.active {
+        top: 0;
+    }
+
+    .sidebar-menu ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .sidebar-menu li {
+        margin: 8px 12px;
+    }
+
+    .sidebar-menu a {
+        font-size: 1.1em;
+        padding: 10px 15px;
+    }
+
+    .main-content {
+        padding: 25px;
+        margin-left: 0;
+        margin-top: 120px; /* Espaço para a sidebar no topo */
+    }
+
+    .sidebar-menu.active ~ .main-content {
+        margin-top: 180px; /* Ajusta a margem superior quando a sidebar está ativa */
+    }
+
+    .typewriter {
+        font-size: 2.2em;
+        white-space: normal;
+    }
+
+    .section-container {
+        padding: 25px;
+        min-height: 350px;
+    }
+
+    .home-page-centered {
+        min-height: calc(100vh - 100px);
+    }
+
+    .large-button {
+        padding: 18px 35px;
+        font-size: 1.4em;
+    }
+
+    .special-quote {
+        font-size: 1.6em;
+        margin-top: 40px;
+    }
+    .special-quote::before, .special-quote::after {
+        content: ''; /* Remove corações extras em mobile para evitar quebras */
+    }
+
+
+    .cute-emojis {
+        font-size: 3em;
+        margin-top: 30px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item img {
+        height: 220px;
+    }
+
+    .cute-button {
+        padding: 14px 28px;
+        font-size: 1.1em;
+    }
+
+    .cursor-pet {
+        width: 45px;
+        height: 45px;
+    }
+
+    .floating-heart-toggle {
+        width: 60px;
+        height: 60px;
+        font-size: 2em;
+        top: 15px;
+        left: 15px;
+    }
+
+    .cute-input {
+        width: 80px; /* Ajusta para input de letra única em mobile */
+        padding: 10px 15px;
+        font-size: 1.1em;
+    }
+    #guess-input-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .cute-button.small-button {
+        width: auto;
+        margin: 8px auto;
+    }
+    #wheelCanvas {
+        width: 300px;
+        height: 300px;
+    }
+    #wheelCanvas {
+        border: 6px solid var(--accent-color-day); /* Borda da roda ligeiramente menor */
+    }
+}
+
+/* ... (Seus estilos anteriores permanecem os mesmos) ... */
+
+/* Adicione esta seção no seu CSS */
+.centered-content-wrapper {
+    max-width: 900px; /* Largura máxima para o conteúdo centralizado */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 0 20px; /* Padding para não colar nas bordas em telas pequenas */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+/* Ajuste para centralizar o cabeçalho se ele estiver colando nas laterais */
+.header-section {
+    text-align: center;
+    padding: 40px 20px; /* Adicione padding horizontal */
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Remova ou ajuste a largura máxima do typewriter, já que a animação não será usada */
+.header-section h1 {
+    /* As propriedades da fonte e cor já vêm do CSS original */
+    /* Se você tinha `max-width` ou `margin: 0 auto` aqui, ajuste para que não restrinja a largura */
+    /* Apenas garanta que o texto esteja centralizado */
+    text-align: center;
+    font-family: 'Pacifico', cursive; /* Mantém a fonte fofa */
+    font-size: 3.5em; /* Mantém o tamanho do texto */
+    color: var(--accent-color-day); /* Mantém a cor */
+    text-shadow: var(--text-shadow-cute); /* Mantém a sombra fofa */
+    /* Remove as propriedades de overflow, white-space e border-right */
+    /* Remove as animações de typing e blink-caret */
+}
+
+/* Remova as animações de typing e blink-caret se elas ainda estiverem em outro lugar */
+/* Ou certifique-se de que não estão sendo aplicadas ao h1 */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-color-day); }
+}
+
+/* Certifique-se de que o .home-page-centered ainda funciona com a nova estrutura */
+.home-page-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Ajusta para a altura da tela */
+    text-align: center;
+}
+
+/* No modo noite, o texto do cabeçalho precisa ter a cor correta */
+body.night-mode .header-section h1 {
+    color: var(--accent-color-night);
+    text-shadow: 0 0 10px var(--sparkle-color);
+}
+
+
+/* Outros ajustes menores, se necessário, para garantir que os elementos internos das seções estejam centralizados. */
+/* A maioria dos elementos de texto e botões já são centralizados por 'text-align: center' ou 'margin: auto' nas suas regras existentes. */
+
+/* Ajustes para responsividade se o centered-content-wrapper causar problemas */
+@media (max-width: 768px) {
+    .centered-content-wrapper {
+        padding: 0 10px; /* Menos padding em telas menores */
+    }
+    .header-section h1 {
+        font-size: 2.2em; /* Tamanho ajustado para mobile */
+    }
+}   
+
+/* ... (Mantenha seus estilos anteriores acima desta seção) ... */
+
+/* Ajustes para o corpo e conteúdo principal para garantir centralização */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Garante que o body se comporte como coluna para centralizar conteúdo verticalmente se necessário */
+    min-height: 100vh;
+    background-color: var(--primary-bg-day);
+    color: var(--text-color-day);
+    transition: background-color 0.7s ease, color 0.7s ease;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+    position: relative;
+    align-items: center; /* Centraliza o main-content horizontalmente */
+}
+
+/* O contêiner principal de conteúdo, garante que ele não seja muito largo e se centralize */
+.main-content {
+    flex-grow: 1;
+    padding: 50px 20px; /* Adicione padding horizontal para não colar nas bordas */
+    margin-left: 0;
+    transition: margin-left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: relative;
+    max-width: 900px; /* Defina uma largura máxima para o conteúdo */
+    width: 100%; /* Garante que ocupe a largura disponível dentro do max-width */
+    box-sizing: border-box; /* Inclui padding na largura total */
+    display: flex; /* Adicione display flex */
+    flex-direction: column; /* E direção de coluna */
+    align-items: center; /* Centraliza itens dentro do main-content */
+    text-align: center; /* Centraliza texto por padrão */
+}
+
+/* Ajuste para quando a sidebar está ativa: o main-content deve se afastar, mas manter a centralização interna */
+.sidebar-menu.active ~ .main-content {
+    margin-left: 280px; /* Ajusta a margem para dar espaço à sidebar */
+    /* Mantenha as propriedades de centralização interna */
+}
+
+
+/* Header e Mensagem de Amor */
+.header-section {
+    text-align: center; /* Centraliza o texto dentro do header */
+    padding: 40px 20px; /* Adicione padding horizontal para não cortar o texto */
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
+    width: 100%; /* Garante que o header ocupe a largura total disponível */
+    max-width: 900px; /* Opcional: limitar a largura para não ficar muito esticado em telas grandes */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+.header-section h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5em; /* Fonte grande e fofa */
+    color: var(--accent-color-day);
+    text-shadow: var(--text-shadow-cute);
+    /* Remova quaisquer propriedades de `width`, `white-space`, `overflow` ou `border-right` que possam ter sobrado */
+    /* E remova as animações de `typing` e `blink-caret` se ainda estiverem aqui */
+    margin: 0 auto; /* Importante para centralizar o h1 se ele tiver uma largura definida */
+    max-width: 100%; /* Garante que ele não ultrapasse o contêiner */
+}
+
+/* Seções de Conteúdo */
+.section-container {
+    background-color: var(--secondary-bg-day);
+    padding: 40px;
+    border-radius: var(--border-radius-cute);
+    box-shadow: var(--box-shadow-fofo);
+    margin-bottom: 35px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    min-height: 450px;
+    display: none;
+    width: 100%; /* Garante que a seção ocupe a largura do main-content */
+    box-sizing: border-box;
+    text-align: center; /* Centraliza o texto dentro de cada seção */
+}
+
+/* O contêiner que envolve todas as seções para centralizá-las */
+/* Se você usou uma div com a classe 'centered-content-wrapper' no HTML, as regras abaixo são para ela.
+   Se não, as regras de 'main-content' já devem ser suficientes. */
+/* .centered-content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+} */
+
+
+/* ... (Mantenha o restante dos seus estilos sem alterações) ... */
+
+/* Responsividade - Ajustes específicos para telas menores */
+@media (max-width: 768px) {
+    /* Ajustes para o main-content em telas pequenas */
+    .main-content {
+        padding: 25px 15px; /* Mais padding em telas pequenas */
+        margin-left: 0; /* Garante que não tenha margem da sidebar */
+    }
+
+    .sidebar-menu {
+        /* ... (Mantenha seus estilos da sidebar para mobile) ... */
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: -180px;
+        flex-direction: row;
+        justify-content: center;
+        padding: 15px;
+        border-radius: 0 0 var(--border-radius-cute) var(--border-radius-cute);
+    }
+
+    .sidebar-menu.active {
+        top: 0;
+    }
+
+    .sidebar-menu.active ~ .main-content {
+        margin-top: 180px; /* Ajusta a margem superior quando a sidebar está ativa */
+        margin-left: 0; /* Garante que o main-content não seja empurrado horizontalmente em mobile */
+    }
+
+    .header-section {
+        padding: 40px 15px; /* Mais padding em telas pequenas */
+    }
+
+    .header-section h1 {
+        font-size: 2.2em; /* Tamanho ajustado para mobile */
+    }
+
+    .section-container {
+        padding: 25px;
+    }
+
+    /* ... (Mantenha o restante dos seus estilos responsivos) ... */
+}
